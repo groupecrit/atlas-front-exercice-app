@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "declaration": true,
+        "declarationDir": "dist",
+        "esModuleInterop": true,
+        "jsx": "react-jsx",
+        "lib": ["dom", "es5", "scripthost", "es2015", "es2015.promise", "es2016.array.include", "es2018"],
+        "module": "esnext",
+        "moduleResolution": "node",
+        "noImplicitAny": false,
+        "outDir": "dist",
+        "paths": {
+            "@mui/styled-engine": ["./node_modules/@mui/styled-engine"]
+        },
+        "sourceMap": true,
+        "target": "es5",
+        "types": ["jest", "node"]
+    },
+    "exclude": ["node_modules", "src/coverage"],
+    "include": ["src/**/*"]
+}

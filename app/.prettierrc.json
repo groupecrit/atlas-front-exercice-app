@@ -1,0 +1,37 @@
+{
+    "printWidth": 140,
+    "tabWidth": 4,
+    "singleQuote": true,
+    "arrowParens": "always",
+    "trailingComma": "es5",
+    "overrides": [
+        {
+            "files": ["*.json", ".*rc"],
+            "options": {
+                "trailingComma": "none"
+            }
+        }
+    ],
+    "endOfLine": "auto",
+    "bracketSpacing": true,
+    "bracketSameLine": false,
+    "semi": true,
+    "importOrder": [
+        "^@mui/(.*)$",
+        "^@components/(.*)$",
+        "^@services/(.*)$",
+        "^@pages/(.*)$",
+        "^@contexts/(.*)$",
+        "^@hooks/(.*)$",
+        "^@aex-types/(.*)$",
+        "^@utils/(.*)$",
+        "^@constants/(.*)$",
+        "^@assets/(.*)$",
+        "^@styles/(.*)$",
+        "^@tests/(.*)$",
+        "^@fixtures/(.*)$",
+        "^[./]"
+    ],
+    "importOrderSeparation": true,
+    "importOrderSortSpecifiers": true
+}

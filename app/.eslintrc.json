@@ -1,0 +1,180 @@
+{
+    "env": {
+        "browser": true,
+        "node": true,
+        "es2021": true
+    },
+    "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": 12,
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "settings": {
+        "import/core-modules": ["@mui/system", "history"],
+        "react": {
+            "version": "detect"
+        },
+        "import/resolver": {
+            "typescript": {}
+        }
+    },
+    "overrides": [
+        {
+            "files": ["*.js"],
+            "extends": ["eslint:recommended", "plugin:prettier/recommended"],
+            "rules": {
+                "no-var": "error",
+                "unused-imports/no-unused-imports": "error"
+            }
+        },
+        {
+            "files": ["*.ts", "*.tsx"],
+            "extends": [
+                "airbnb",
+                "airbnb/hooks",
+                "plugin:react/recommended",
+                "plugin:@typescript-eslint/recommended",
+                "plugin:prettier/recommended",
+                "plugin:react/jsx-runtime" // Avoid manual import React in .jsx and .tsx modules,
+            ],
+            "plugins": ["@typescript-eslint", "react", "unused-imports"],
+            "parser": "@typescript-eslint/parser",
+            "rules": {
+                "@typescript-eslint/no-empty-function": 0,
+                "@typescript-eslint/explicit-function-return-type": 0,
+                "@typescript-eslint/explicit-module-boundary-types": ["off"],
+                "@typescript-eslint/no-implicit-any": 0,
+                "@typescript-eslint/no-explicit-any": 0, // for tests
+                "@typescript-eslint/interface-name-prefix": 0,
+                "@typescript-eslint/no-inferrable-types": 0,
+                "@typescript-eslint/camelcase": 0,
+                "@typescript-eslint/no-unused-vars": [
+                    "error",
+                    {
+                        "args": "none"
+                    }
+                ],
+                "react/display-name": 0, // for tests
+                "react/prop-types": ["error"],
+                "react/react-in-jsx-scope": 0,
+                "no-extra-boolean-cast": 0,
+                "no-use-before-define": "off",
+                "@typescript-eslint/no-use-before-define": ["error"],
+                "react/jsx-filename-extension": [
+                    "warn",
+                    {
+                        "extensions": [".tsx"]
+                    }
+                ],
+                "import/extensions": [
+                    "error",
+                    "ignorePackages",
+                    {
+                        "ts": "never",
+                        "tsx": "never"
+                    }
+                ],
+                "jsx-a11y/label-has-associated-control": [
+                    2,
+                    {
+                        "assert": "either" // either check for `htmlFor` or `nesting`
+                    }
+                ],
+                "spaced-comment": [
+                    "error",
+                    "always",
+                    {
+                        "line": {
+                            "markers": ["/"],
+                            "exceptions": ["-", "+"]
+                        },
+                        "block": {
+                            "markers": ["!"],
+                            "exceptions": ["*"],
+                            "balanced": true
+                        }
+                    }
+                ],
+                "max-len": "off", // handled by prettier
+                "indent": "off", // handled by prettier
+                "react/jsx-indent": "off", // handled by prettier
+                "react/jsx-indent-props": "off", // handled by prettier
+                "react/jsx-wrap-multilines": [
+                    "error",
+                    {
+                        "declaration": "parens-new-line",
+                        "assignment": "parens-new-line",
+                        "return": "parens-new-line",
+                        "arrow": "parens-new-line",
+                        "condition": "parens-new-line",
+                        "logical": "ignore",
+                        "prop": "ignore"
+                    }
+                ],
+                "react-hooks/rules-of-hooks": "error",
+                "react-hooks/exhaustive-deps": "warn",
+                "react/jsx-props-no-spreading": "off",
+                "import/prefer-default-export": "off",
+                "react/require-default-props": "off",
+                "react/jsx-curly-newline": "off",
+                "no-shadow": "off",
+                "no-plusplus": "off",
+                "no-underscore-dangle": "off",
+                "no-param-reassign": "off",
+                "react/destructuring-assignment": "off",
+                "import/order": "off", // Maybe we can think of having import order?
+                "import/no-extraneous-dependencies": [
+                    "error",
+                    {
+                        "devDependencies": true
+                    }
+                ],
+                "no-nested-ternary": "off", // Do we really want nested ternary assignments?
+                "no-var": "error",
+                "no-unused-vars": [
+                    "off",
+                    {
+                        "args": "none"
+                    }
+                ], // Until we implement useApi?
+                "unused-imports/no-unused-imports": "error",
+                "no-undef": "off", // Until we implement useApi?
+                "camelcase": [
+                    "error",
+                    {
+                        "allow": ["access_token", "refresh_token"]
+                    }
+                ],
+                "object-curly-newline": [
+                    "error",
+                    {
+                        "ObjectExpression": {
+                            "consistent": true
+                        }
+                    }
+                ],
+                "comma-dangle": [
+                    "error",
+                    {
+                        "arrays": "always-multiline",
+                        "objects": "always-multiline",
+                        "imports": "always-multiline",
+                        "exports": "never",
+                        "functions": "never"
+                    }
+                ],
+                "eqeqeq": ["error", "always"],
+                "no-unused-expressions": [
+                    "error",
+                    {
+                        "allowTernary": true
+                    }
+                ],
+                "react/jsx-one-expression-per-line": "off",
+                "arrow-body-style": ["error", "as-needed"]
+            }
+        }
+    ]
+}
