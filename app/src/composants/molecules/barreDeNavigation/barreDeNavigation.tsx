@@ -1,4 +1,3 @@
-import { PropsWithChildren } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { AppBar, Grid, Toolbar, useTheme } from '@mui/material';

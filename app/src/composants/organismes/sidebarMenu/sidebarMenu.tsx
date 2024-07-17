@@ -1,8 +1,23 @@
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { Box, CSSObject, CssBaseline, IconButton, Theme, styled, useTheme } from '@mui/material';
+import HomeIcon from '@mui/icons-material/Home';
+import {
+    Box,
+    CSSObject,
+    CssBaseline,
+    IconButton,
+    List,
+    ListItem,
+    ListItemButton,
+    ListItemIcon,
+    ListItemText,
+    Theme,
+    styled,
+    useTheme,
+} from '@mui/material';
 import MuiDrawer from '@mui/material/Drawer';
 
 import { THEME_COULEURS } from '../../../styles';
@@ -44,10 +59,29 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
         '& .MuiDrawer-paper': closedMixin(theme),
     }),
 }));
+type MenuItem = {
+    texte: string;
+    icon: ReactNode;
+    pathname: string;
+    handleClick: () => void;
+};
 
 export default function SidebarMenu() {
     const [open, setOpen] = useState(true);
     const theme = useTheme();
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const menuItems: Array<MenuItem> = [
+        {
+            texte: 'Accueil',
+            icon: <HomeIcon />,
+            pathname: '/',
+            handleClick: () => {
+                navigate('/');
+            },
+        },
+    ];
 
     const handleClick = () => {
         if (open) {
@@ -56,6 +90,23 @@ export default function SidebarMenu() {
             setOpen(true);
         }
     };
+
+    const isSelected = (pathname, targetPath) => {
+        if (!targetPath) return false;
+
+        if (pathname === targetPath) {
+            return true;
+        }
+        if (pathname?.startsWith('/sourcing/offres') && targetPath === '/sourcing') {
+            return false;
+        }
+        if (pathname?.startsWith(`${targetPath}/`) || (targetPath === '/' && pathname === '/')) {
+            return true;
+        }
+
+        return false;
+    };
+
     return (
         <Box data-testid="sidebar-menu" sx={{ display: 'flex' }}>
             <CssBaseline />
@@ -102,6 +153,45 @@ export default function SidebarMenu() {
                         />
                     )}
                 </IconButton>
+                <List sx={{ marginTop: 2 }}>
+                    {menuItems.map((item, index) => (
+                        <ListItem key={item.pathname} 
+                        sx={{ justifyContent: 'center' }} disablePadding>
+                            <ListItemButton
+                                selected={isSelected(location.pathname, item.pathname)}
+                                onClick={item.handleClick}
+                                sx={{
+                                    '&.Mui-selected': {
+                                        backgroundColor: THEME_COULEURS.SECONDARY.LIGHT,
+                                        color: THEME_COULEURS.SECONDARY.MAIN,
+                                        '&:hover, &.Mui-hovered': {
+                                            backgroundColor: THEME_COULEURS.SECONDARY.LIGHT,
+                                        },
+                                    },
+                                    ':hover': {
+                                        backgroundColor: THEME_COULEURS.COLORS.GREY[100],
+                                    },
+                                    minHeight: 48,
+                                    justifyContent: open ? 'initial' : 'center',
+                                    px: 2.5,
+                                    borderRadius: '4px'
+                                }}
+                            >
+                                <ListItemIcon
+                                    sx={{
+                                        color: isSelected(location.pathname, item.pathname) ? THEME_COULEURS.SECONDARY.MAIN : null,
+                                        minWidth: 0,
+                                        mr: open ? 1.5 : 'auto',
+                                        justifyContent: 'center',
+                                    }}
+                                >
+                                    {item.icon}
+                                </ListItemIcon>
+                                <ListItemText primary={item.texte} sx={{ opacity: open ? 1 : 0 }} />
+                            </ListItemButton>
+                        </ListItem>
+                    ))}
+                </List>
             </Drawer>
         </Box>
     );

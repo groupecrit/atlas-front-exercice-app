@@ -6,7 +6,7 @@ const testId = 'app-content';
 const childId = 'child-test-id';
 
 jest.mock('../sidebarMenu/sidebarMenu');
-jest.mock('../../molecules/barreDeNavigation/barreDeNavigation')
+jest.mock('../../molecules/barreDeNavigation/barreDeNavigation');
 
 describe(`<Layout />`, () => {
     it(`Vérification du rendu avec un child`, () => {

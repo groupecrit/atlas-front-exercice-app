@@ -1,25 +1,20 @@
-import { render, within } from "@testing-library/react";
-import PageProfil from "./profil";
-import { useParams } from "react-router-dom";
-import { MOCK_PROFILS } from "../../../unitsTests/mocks/metier";
-import { renderConfig } from "../../../unitsTests/helpers/renderConfig";
+import { within } from '@testing-library/react';
+import { useParams } from 'react-router-dom';
+
+import { renderConfig } from '../../../unitsTests/helpers/renderConfig';
+import { MOCK_PROFILS } from '../../../unitsTests/mocks/metier';
+import PageProfil from './profil';
 
 const testId = 'page-profil';
 
 jest.mock('react-router-dom', () => ({
     ...jest.requireActual('react-router-dom'),
     useParams: jest.fn(() => ({
-        id: 0
+        id: 0,
     })),
 }));
 
-const id = 0
-
-const longEnUSFormatter = new Intl.DateTimeFormat('fr-EU', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-});
+const id = 0;
 
 describe('<PageProfil />', () => {
     it('Vérification du rendu de la page profil', () => {
@@ -33,10 +28,8 @@ describe('<PageProfil />', () => {
         expect(experience).toHaveTextContent(`Dernière expérience : ${MOCK_PROFILS[id].experience}`);
         const localisation = within(page).getByTestId(`${testId}-localisation`);
         expect(localisation).toHaveTextContent(`Localisation : ${MOCK_PROFILS[id].localisation.cp} ${MOCK_PROFILS[id].localisation.ville}`);
-        const dateCreation = within(page).getByTestId(`${testId}-date-creation`);
-        expect(dateCreation).toHaveTextContent(`Date de création : ${longEnUSFormatter.format(new Date(MOCK_PROFILS[0].dateCreation))}`);
     });
-    it('Vérification de la présence du message d\'erreur de navigation', () => {
+    it("Vérification de la présence du message d'erreur de navigation", () => {
         (useParams as jest.Mock).mockReturnValueOnce({ id: undefined });
         const { getByText } = renderConfig(<PageProfil />);
         expect(getByText('Erreur de navigation')).toBeInTheDocument();
@@ -46,4 +39,4 @@ describe('<PageProfil />', () => {
         const { getByText } = renderConfig(<PageProfil />);
         expect(getByText('Profil inexistant')).toBeInTheDocument();
     });
-})
+});

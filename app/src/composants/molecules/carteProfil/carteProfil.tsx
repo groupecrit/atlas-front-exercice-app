@@ -2,12 +2,10 @@ import { useNavigate } from 'react-router-dom';
 
 import { Card, CardContent, Grid, SxProps, Theme, Typography } from '@mui/material';
 
-import useUtils from '../../../hooks/useUtils/useUtils';
 import { THEME_COULEURS } from '../../../styles';
 import { Profil } from '../../../types/profil';
 
 export default function Carte({ profil, idx }: Readonly<{ profil: Profil; idx: number }>) {
-    const { formatDateOuNonRenseigne, valeurOuNonRenseigne } = useUtils();
     const navigate = useNavigate();
     const sx: SxProps<Theme> = {
         width: '250px',
@@ -23,19 +21,17 @@ export default function Carte({ profil, idx }: Readonly<{ profil: Profil; idx: n
                     <Grid container direction="row" justifyContent="space-between">
                         <Grid item>
                             <Typography data-testid="carte-profil-nom-prenom" variant="subtitle1">
-                                {valeurOuNonRenseigne(`${profil?.nom} ${profil?.prenom}`)}
+                                {`${profil?.nom} ${profil?.prenom}`}
                             </Typography>
                         </Grid>
                         <Grid item>
                             <Typography data-testid="carte-profil-experience" variant="body2">
-                                {valeurOuNonRenseigne(profil?.experience)}
+                                {profil?.experience}
                             </Typography>
                         </Grid>
-                        <Grid item mt={2}>
-                            <Typography data-testid="carte-profil-date-et-localisation" variant="helperText">
-                                {`${formatDateOuNonRenseigne(profil?.dateCreation)} · ${valeurOuNonRenseigne(
-                                    `${profil?.localisation?.cp} ${profil?.localisation?.ville}`
-                                )}`}{' '}
+                        <Grid container item mt={2}>
+                            <Typography data-testid="carte-profil-localisation" variant="helperText">
+                                {`${profil?.localisation?.cp} ${profil?.localisation?.ville}`}
                             </Typography>
                         </Grid>
                     </Grid>

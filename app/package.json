@@ -82,9 +82,5 @@
             "eslint --fix",
             "prettier --write"
         ]
-    },
-    "engines": {
-        "node": "18.12.1",
-        "npm": "9.6.3"
     }
 }

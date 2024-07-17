@@ -1,7 +1,5 @@
-import { render } from '@testing-library/react';
-
-import BarreDeNavigation from './barreDeNavigation';
 import { renderConfig } from '../../../unitsTests/helpers/renderConfig';
+import BarreDeNavigation from './barreDeNavigation';
 
 const testId = 'barre-de-navigation';
 

@@ -22,6 +22,7 @@ module.exports = (_) => {
         devServer: {
             port: 9099,
             historyApiFallback: true,
+            hot: false,
             headers: {
                 'Access-Control-Allow-Origin': '*',
             },
@@ -37,7 +38,7 @@ module.exports = (_) => {
                 {
                     test: /\.(png|svg|jpg|jpeg|gif)$/i,
                     type: 'asset/resource',
-                }
+                },
             ],
         },
         plugins: [
@@ -82,11 +83,12 @@ module.exports = (_) => {
                     '@mui/icons-material': {
                         eager: true,
                         requiredVersion: deps['@mui/icons-material'],
-                    }
+                    },
                 },
             }),
             new HtmlWebpackPlugin({
-                template: 'public/index.html',
+                template: 'src/index.html',
+                hash: true,
             }),
         ],
     };

@@ -7,6 +7,12 @@ const boutonId = 'sidebar-menu-bouton';
 const boutonOuvertId = 'sidebar-menu-bouton-icon-ouvert';
 const boutonFermeId = 'sidebar-menu-bouton-icon-ferme';
 
+jest.mock('react-router-dom', () => ({
+    ...jest.requireActual('react-router-dom'),
+    useLocation: () => jest.fn(),
+    useNavigate: () => jest.fn(),
+}));
+
 describe(`<SidebarMenu>`, () => {
     it('Rendu du composant pour la sidebar et si elle est par défaut ouverte', () => {
         const { getByTestId } = render(<SidebarMenu />);
