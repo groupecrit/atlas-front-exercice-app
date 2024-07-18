@@ -5,7 +5,7 @@ import { Card, CardContent, Grid, SxProps, Theme, Typography } from '@mui/materi
 import { THEME_COULEURS } from '../../../styles';
 import { Profil } from '../../../types/profil';
 
-export default function Carte({ profil, idx }: Readonly<{ profil: Profil; idx: number }>) {
+export default function CarteProfil({ profil, idx }: Readonly<{ profil: Profil; idx: number }>) {
     const navigate = useNavigate();
     const sx: SxProps<Theme> = {
         width: '250px',
@@ -15,7 +15,7 @@ export default function Carte({ profil, idx }: Readonly<{ profil: Profil; idx: n
     };
 
     return (
-        <Grid onClick={() => navigate(`/profil/${idx}`)} sx={{ cursor: 'pointer' }}>
+        <Grid onClick={() => navigate(`/profils/${idx}`)} sx={{ cursor: 'pointer' }}>
             <Card elevation={3} sx={sx} data-testid="carte-profil" className="nouveau-cv">
                 <CardContent>
                     <Grid container direction="row" justifyContent="space-between">

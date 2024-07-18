@@ -4,7 +4,7 @@ import { AppBar, Grid, Toolbar, useTheme } from '@mui/material';
 
 import { THEME_COULEURS } from '../../../styles';
 
-export default function BarreDeNavigation() {
+export default function Topbar() {
     const theme = useTheme();
     const navigate = useNavigate();
 
@@ -21,8 +21,8 @@ export default function BarreDeNavigation() {
                 boxShadow: `0px 1px 1px ${THEME_COULEURS.SHADOW.PRIMARY}`,
             }}
         >
-            <Toolbar data-testid="barre-de-navigation" sx={{ minHeight: { md: 45, lg: 50 } }}>
-                <Grid data-testid="barre-de-navigation-logo" onClick={() => navigate('/')} sx={{ cursor: 'pointer' }}>
+            <Toolbar data-testid="topbar" sx={{ minHeight: { md: 45, lg: 50 } }}>
+                <Grid data-testid="topbar-logo" onClick={() => navigate('/')} sx={{ cursor: 'pointer' }}>
                     <img src="/assets/favicon.ico" alt="logo" />
                 </Grid>
             </Toolbar>

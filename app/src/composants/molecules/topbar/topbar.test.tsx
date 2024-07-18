@@ -1,7 +1,7 @@
 import { renderConfig } from '../../../unitsTests/helpers/renderConfig';
-import BarreDeNavigation from './barreDeNavigation';
+import Topbar from './topbar';
 
-const testId = 'barre-de-navigation';
+const testId = 'topbar';
 
 const mockUseNavigate = jest.fn();
 
@@ -10,14 +10,14 @@ jest.mock('react-router-dom', () => ({
     useNavigate: () => mockUseNavigate,
 }));
 
-describe(`<BarreDeNavigation>`, () => {
+describe(`<Topbar>`, () => {
     it(`Vérification de la présence de la barre de navigation`, () => {
-        const { getByTestId } = renderConfig(<BarreDeNavigation />);
+        const { getByTestId } = renderConfig(<Topbar />);
         const barreDeNavigation = getByTestId(testId);
         expect(barreDeNavigation).toBeInTheDocument();
     });
     it(`Vérification de la navigation vers l'accueil`, () => {
-        const { getByTestId } = renderConfig(<BarreDeNavigation />);
+        const { getByTestId } = renderConfig(<Topbar />);
         const accueil = getByTestId(`${testId}-logo`);
         accueil.click();
         expect(mockUseNavigate).toHaveBeenCalledWith('/');

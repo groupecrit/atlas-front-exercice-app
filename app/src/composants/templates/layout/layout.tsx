@@ -2,13 +2,13 @@ import { PropsWithChildren } from 'react';
 
 import { Box, Grid } from '@mui/material';
 
-import BarreDeNavigation from '../../molecules/barreDeNavigation/barreDeNavigation';
-import SideBarMenu from '../sidebarMenu/sidebarMenu';
+import Topbar from '../../molecules/topbar/topbar';
+import SideBarMenu from '../../organismes/sidebarMenu/sidebarMenu';
 
 export default function Layout(props: Readonly<PropsWithChildren>) {
     return (
         <Grid>
-            <BarreDeNavigation />
+            <Topbar />
             <Box
                 data-testid="app-content"
                 component="main"

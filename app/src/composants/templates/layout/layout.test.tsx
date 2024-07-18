@@ -5,8 +5,8 @@ import Layout from './layout';
 const testId = 'app-content';
 const childId = 'child-test-id';
 
-jest.mock('../sidebarMenu/sidebarMenu');
-jest.mock('../../molecules/barreDeNavigation/barreDeNavigation');
+jest.mock('../../organismes/sidebarMenu/sidebarMenu');
+jest.mock('../../molecules/topbar/topbar');
 
 describe(`<Layout />`, () => {
     it(`Vérification du rendu avec un child`, () => {

@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import HomeIcon from '@mui/icons-material/Home';
+import Person2Icon from '@mui/icons-material/Person2';
 import {
     Box,
     CSSObject,
@@ -59,29 +60,31 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
         '& .MuiDrawer-paper': closedMixin(theme),
     }),
 }));
+
 type MenuItem = {
     texte: string;
     icon: ReactNode;
     pathname: string;
-    handleClick: () => void;
 };
+
+const menuItems: Array<MenuItem> = [
+    {
+        texte: 'Accueil',
+        icon: <HomeIcon />,
+        pathname: '/',
+    },
+    {
+        texte: 'Profils',
+        icon: <Person2Icon />,
+        pathname: '/profils',
+    },
+];
 
 export default function SidebarMenu() {
     const [open, setOpen] = useState(true);
     const theme = useTheme();
     const location = useLocation();
     const navigate = useNavigate();
-
-    const menuItems: Array<MenuItem> = [
-        {
-            texte: 'Accueil',
-            icon: <HomeIcon />,
-            pathname: '/',
-            handleClick: () => {
-                navigate('/');
-            },
-        },
-    ];
 
     const handleClick = () => {
         if (open) {
@@ -154,12 +157,12 @@ export default function SidebarMenu() {
                     )}
                 </IconButton>
                 <List sx={{ marginTop: 2 }}>
-                    {menuItems.map((item, index) => (
+                    {menuItems.map((item) => (
                         <ListItem key={item.pathname} 
                         sx={{ justifyContent: 'center' }} disablePadding>
                             <ListItemButton
                                 selected={isSelected(location.pathname, item.pathname)}
-                                onClick={item.handleClick}
+                                onClick={() => navigate(item.pathname)}
                                 sx={{
                                     '&.Mui-selected': {
                                         backgroundColor: THEME_COULEURS.SECONDARY.LIGHT,

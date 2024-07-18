@@ -18,7 +18,7 @@ export default function PageProfil() {
     const profil = MOCK_PROFILS[id];
 
     return (
-        <Grid data-testid="page-profil" container direction="column" m={3}>
+        <Grid data-testid="page-profil" container direction="column">
             <Typography data-testid="page-profil-nom-prenom" variant="h1">
                 Profil de : {`${profil?.nom} ${profil?.prenom}`}
             </Typography>

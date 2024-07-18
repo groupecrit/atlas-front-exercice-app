@@ -28,6 +28,6 @@ describe(`<CarteProfil />`, () => {
         const { getByTestId } = renderConfig(<CarteProfil profil={MOCK_PROFILS[0]} idx={0} />);
         const carteProfil = getByTestId(testId);
         carteProfil.click();
-        expect(spyUseNavigate).toHaveBeenCalledWith(`/profil/${0}`);
+        expect(spyUseNavigate).toHaveBeenCalledWith(`/profils/${0}`);
     });
 });
