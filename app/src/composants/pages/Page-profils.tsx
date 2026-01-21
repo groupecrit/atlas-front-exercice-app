@@ -1,8 +1,8 @@
 import dayjs from "dayjs";
 import { Profil } from "../../types/profil"
-import { Grid, Typography } from "@mui/material";
 import CarteProfil from "../molecules/carteProfil/carteProfil";
 import { ReactNode } from "react";
+import { View, Text } from 'react-native';
 
 export default function pageProfils(){
     let profils: Profils = [];
@@ -25,11 +25,11 @@ export default function pageProfils(){
     });
 
     return (
-        <Grid data-testid="page-accueil" container direction="column">
-            <Typography variant="h1">Nos profils</Typography>
-            <Grid container gap={4} mt={4}>
+        <View data-testid="page-accueil" style={{flexDirection: 'column'}}>
+            <Text>Nos profils</Text>
+            <View style={{gap: 4, marginTop: 4}}>
                 {DOMPROFILS}
-            </Grid>
-        </Grid>
+            </View>
+        </View>
     );
 }
